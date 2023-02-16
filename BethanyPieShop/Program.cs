@@ -1,15 +1,18 @@
 using BethanyPieShop.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var services = builder.Services;
 
-services.AddScoped<IPieRepository, MockPieRepository>();
-services.AddScoped<ICategoryRepository, MockCategoryRepository>();
+services.AddScoped<IPieRepository, PieRepository>();
+services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 services.AddControllersWithViews();
 
+services.AddDbContext<AppDbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
