@@ -1,3 +1,4 @@
+
 using BethanyPieShop.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,9 @@ var services = builder.Services;
 
 services.AddScoped<IPieRepository, PieRepository>();
 services.AddScoped<ICategoryRepository, CategoryRepository>();
+services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+services.AddHttpContextAccessor();
+services.AddSession();
 
 services.AddControllersWithViews();
 
@@ -25,6 +29,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseSession();
+
 
 app.UseRouting();
 

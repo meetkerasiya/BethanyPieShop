@@ -39,7 +39,7 @@ namespace BethanyPieShop.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
 
                     b.HasData(
                         new
@@ -110,7 +110,7 @@ namespace BethanyPieShop.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Pies");
+                    b.ToTable("Pies", (string)null);
 
                     b.HasData(
                         new
@@ -291,7 +291,7 @@ namespace BethanyPieShop.Migrations
 
                     b.HasIndex("PieId");
 
-                    b.ToTable("ShoppingCartItems");
+                    b.ToTable("ShoppingCartItems", (string)null);
                 });
 
             modelBuilder.Entity("BethanyPieShop.Models.Pie", b =>
